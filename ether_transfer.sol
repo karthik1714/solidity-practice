@@ -16,6 +16,7 @@ contract EtherWallet {
 
     function withdrawFunds(uint _amount) public  {
         require(msg.sender == owner, "Not the owner");
+        require(amount <= address(this).balance, "Insufficient balance");
         payable(msg.sender).transfer(_amount);
 
     }
